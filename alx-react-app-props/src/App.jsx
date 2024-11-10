@@ -1,4 +1,6 @@
 import React from 'react';
+import ProfilePage from './ProfilePage';
+import UserContext from './UserContext';
 import Counter from './components/Counter';
 import UserProfile from './components/UserProfile';
 import Header from './components/Header';
@@ -12,10 +14,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
   const [count, setCount] = useState(0)
 
   return (
     <>
+    <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
       <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '40px' }}>
       <h1>Counter Application</h1>
       <Counter />

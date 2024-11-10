@@ -1,3 +1,5 @@
+import React from 'react';
+import Counter from './components/Counter';
 import UserProfile from './components/UserProfile';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
@@ -14,7 +16,9 @@ function App() {
 
   return (
     <>
-      <div>
+      <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '40px' }}>
+      <h1>Counter Application</h1>
+      <Counter />
       <Header />
       <MainContent />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />

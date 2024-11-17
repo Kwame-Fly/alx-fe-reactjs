@@ -7,7 +7,7 @@ const RecipeList = () => {
   const filterRecipes = useRecipeStore(state => state.filterRecipes);  
 
   useEffect(() => {
-    filterRecipes();  // Filter recipes when component mounts (or when recipes are updated)
+    filterRecipes();  
   }, [filterRecipes]);
 
   return (

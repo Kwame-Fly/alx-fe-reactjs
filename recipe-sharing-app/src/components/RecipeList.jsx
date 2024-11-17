@@ -1,14 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';  
 import { useRecipeStore } from './recipeStore';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore(state => state.filteredRecipes);  
-  const filterRecipes = useRecipeStore(state => state.filterRecipes);  
+  const recipes = useRecipeStore(state => state.filteredRecipes);
+  const addFavorite = useRecipeStore(state => state.addFavorite);
+  const removeFavorite = useRecipeStore(state => state.removeFavorite);
+  const favorites = useRecipeStore(state => state.favorites);
 
-  useEffect(() => {
-    filterRecipes();  
-  }, [filterRecipes]);
+  const isFavorite = (id) => favorites.includes(id);
+
+  const handleFavoriteToggle = (recipeId) => {
+    if (isFavorite(recipeId)) {
+      removeFavorite(recipeId);
+    } else {
+      addFavorite(recipeId);
+    }
+  };
 
   return (
     <div>
@@ -18,11 +26,12 @@ const RecipeList = () => {
         recipes.map(recipe => (
           <div key={recipe.id}>
             <h3>
-              {/* Use Link to navigate to the RecipeDetails page */}
               <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
             </h3>
             <p>{recipe.description}</p>
-            {/* You can also add more details here, like ingredients, etc. */}
+            <button onClick={() => handleFavoriteToggle(recipe.id)}>
+              {isFavorite(recipe.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+            </button>
           </div>
         ))
       )}
@@ -31,6 +40,7 @@ const RecipeList = () => {
 };
 
 export default RecipeList;
+
 
 
 

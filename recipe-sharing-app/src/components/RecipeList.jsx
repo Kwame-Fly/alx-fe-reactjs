@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';  
 import { useRecipeStore } from './recipeStore';
 
 const RecipeList = () => {
   const recipes = useRecipeStore(state => state.filteredRecipes);  
-  const filterRecipes = useRecipeStore(state => state.filterRecipes);
+  const filterRecipes = useRecipeStore(state => state.filterRecipes);  
 
   useEffect(() => {
-    filterRecipes();  
+    filterRecipes();  // Filter recipes when component mounts (or when recipes are updated)
   }, [filterRecipes]);
 
   return (
@@ -16,9 +17,12 @@ const RecipeList = () => {
       ) : (
         recipes.map(recipe => (
           <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
+            <h3>
+              {/* Use Link to navigate to the RecipeDetails page */}
+              <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
+            </h3>
             <p>{recipe.description}</p>
-            {/* Add additional details like ingredients, preparation time, etc. */}
+            {/* You can also add more details here, like ingredients, etc. */}
           </div>
         ))
       )}
@@ -27,5 +31,6 @@ const RecipeList = () => {
 };
 
 export default RecipeList;
+
 
 

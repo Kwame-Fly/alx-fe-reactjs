@@ -19,7 +19,19 @@ const FormikForm = () => {
 
   const handleSubmit = (values) => {
     console.log("Form submitted successfully:", values);
-    // Simulate API call here
+    const handleSubmit = (values) => {
+        fetch("https://mockapi.com/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+      };
+      
   };
 
   return (

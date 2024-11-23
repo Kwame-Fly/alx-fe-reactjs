@@ -1,6 +1,19 @@
 import React from 'react';
-const Home = () => <div>Welcome to the Home Page</div>;
+import { useAuth } from '../auth';
+
+const Home = () => {
+  const { login } = useAuth();
+  
+  return (
+    <div>
+      Welcome to the Home Page
+      <button onClick={login}>Login</button>
+    </div>
+  );
+};
+
 export default Home;
+
 
 
 

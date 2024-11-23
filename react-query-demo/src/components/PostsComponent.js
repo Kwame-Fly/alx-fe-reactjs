@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 
-// Function to fetch posts from JSONPlaceholder API
+
 const fetchPosts = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!res.ok) {
@@ -11,10 +11,10 @@ const fetchPosts = async () => {
 };
 
 function PostsComponent() {
-  // Using the useQuery hook to fetch the data
+  
   const { data, error, isLoading, isError, refetch } = useQuery('posts', fetchPosts, {
-    cacheTime: 1000 * 60 * 5, // Data stays in cache for 5 minutes
-    staleTime: 1000 * 60, // Data will be considered fresh for 1 minute
+    cacheTime: 1000 * 60 * 5, 
+    staleTime: 1000 * 60, 
   });
 
   if (isLoading) return <div>Loading...</div>;

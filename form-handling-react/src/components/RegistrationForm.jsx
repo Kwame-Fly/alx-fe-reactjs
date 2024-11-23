@@ -43,7 +43,7 @@ const RegistrationForm = () => {
     e.preventDefault();
     if (validate()) {
       console.log("Form submitted successfully:", formData);
-      
+      // Simulate API call here
     }
   };
 

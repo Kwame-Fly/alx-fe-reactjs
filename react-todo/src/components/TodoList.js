@@ -4,7 +4,7 @@ function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Learn React', completed: false },
     { id: 2, text: 'Learn Testing', completed: false },
-  ]);
+  ]);n
   const [newTodo, setNewTodo] = useState('');
 
   const addTodo = () => {

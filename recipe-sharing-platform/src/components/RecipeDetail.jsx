@@ -1,43 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { useParams, useNavigate } from 'react-router-dom';
 import data from '../data.json';
 
-const HomePage = () => {
-  const [recipes, setRecipes] = useState([]);
+const RecipeDetail = () => {
+  const { id } = useParams(); // Get the recipe ID from the URL
+  const [recipe, setRecipe] = useState(null);
+  const navigate = useNavigate(); // To navigate back to the homepage
 
   useEffect(() => {
-    // Load the recipe data from data.json (or an API if you're using one)
-    setRecipes(data);
-  }, []);
+    // Find the recipe by ID
+    const selectedRecipe = data.find((recipe) => recipe.id === parseInt(id));
+    setRecipe(selectedRecipe);
+  }, [id]);
+
+  if (!recipe) {
+    return <div>Recipe not found...</div>; // Loading or not found message
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Recipe Sharing Platform</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {recipes.map((recipe) => (
-          <div key={recipe.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
-            <img
-              src={recipe.image}
-              alt={recipe.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
-              <p className="text-gray-600 mb-4">{recipe.summary}</p>
-              {/* Link to navigate to the recipe detail page */}
-              <Link
-                to={`/recipe/${recipe.id}`}
-                className="text-blue-500 hover:text-blue-700"
-              >
-                View Recipe
-              </Link>
-            </div>
-          </div>
-        ))}
+      <button
+        className="text-blue-500 mb-4"
+        onClick={() => navigate('/')} // Go back to the homepage
+      >
+        Back to Home
+      </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 shadow-lg p-6 rounded-lg bg-white">
+        {/* Recipe Image with shadow */}
+        <div className="shadow-lg rounded-lg overflow-hidden">
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+            className="w-full h-80 object-cover rounded-lg shadow-md"
+          />
+        </div>
+        <div>
+          <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
+          <p className="text-lg text-gray-600 mb-4">{recipe.summary}</p>
+          
+          <h2 className="text-2xl font-semibold mb-2">Ingredients:</h2>
+          <ul className="list-disc pl-5 mb-4">
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+
+          <h2 className="text-2xl font-semibold mb-2">Instructions:</h2>
+          <ol className="list-decimal pl-5">
+            {recipe.instructions.map((step, index) => (
+              <li key={index}>{step}</li>
+            ))}
+          </ol>
+        </div>
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default RecipeDetail;
 

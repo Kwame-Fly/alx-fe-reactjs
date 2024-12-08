@@ -3,25 +3,40 @@
       "id": 1,
       "title": "Spaghetti Carbonara",
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://via.placeholder.com/150",
+      "ingredients": [
+        "Spaghetti",
+        "Eggs",
+        "Bacon",
+        "Pecorino Cheese",
+        "Black Pepper"
+      ],
+      "instructions": [
+        "Boil the spaghetti in salted water until al dente.",
+        "Fry the bacon until crispy.",
+        "Whisk eggs with grated Pecorino cheese and black pepper.",
+        "Drain the spaghetti and toss with bacon and the egg mixture."
+      ]
     },
     {
       "id": 2,
       "title": "Chicken Tikka Masala",
-      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-      "image": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 3,
-      "title": "Vegetable Stir Fry",
-      "summary": "A healthy and colorful mix of vegetables stir-fried with soy sauce and sesame oil.",
-      "image": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 4,
-      "title": "Beef Stew",
-      "summary": "A rich and hearty beef stew cooked with potatoes, carrots, and onions in a savory broth.",
-      "image": "https://via.placeholder.com/150"
+      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
+      "image": "https://via.placeholder.com/150",
+      "ingredients": [
+        "Chicken",
+        "Yogurt",
+        "Garlic",
+        "Tomato Puree",
+        "Cream",
+        "Spices"
+      ],
+      "instructions": [
+        "Marinate chicken with yogurt, garlic, and spices for 30 minutes.",
+        "Grill the chicken pieces until cooked.",
+        "Cook onions, garlic, and spices in butter until fragrant.",
+        "Add tomato puree and cream, and simmer with the grilled chicken."
+      ]
     }
   ]
   

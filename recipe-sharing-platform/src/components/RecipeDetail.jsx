@@ -25,12 +25,13 @@ const RecipeDetail = () => {
       >
         Back to Home
       </button>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 shadow-lg p-6 rounded-lg bg-white">
+        {/* Recipe Image with shadow */}
+        <div className="shadow-lg rounded-lg overflow-hidden">
           <img
             src={recipe.image}
             alt={recipe.title}
-            className="w-full h-80 object-cover rounded-lg"
+            className="w-full h-80 object-cover rounded-lg shadow-md"
           />
         </div>
         <div>

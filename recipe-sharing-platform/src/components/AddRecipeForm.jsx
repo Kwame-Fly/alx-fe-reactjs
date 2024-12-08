@@ -6,34 +6,46 @@ const AddRecipeForm = () => {
   const [steps, setSteps] = useState('');
   const [errors, setErrors] = useState({});
 
+  // Validation function to check form fields
+  const validate = () => {
+    const validationErrors = {};
+
+    // Validate Title
+    if (!title) validationErrors.title = 'Title is required.';
+    
+    // Validate Ingredients
+    if (!ingredients) validationErrors.ingredients = 'Ingredients are required.';
+    else if (ingredients.split('\n').length < 2)
+      validationErrors.ingredients = 'Please add at least two ingredients.';
+
+    // Validate Steps
+    if (!steps) validationErrors.steps = 'Preparation steps are required.';
+
+    return validationErrors;
+  };
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate form
-    const validationErrors = {};
+    // Validate form fields using the validate function
+    const validationErrors = validate();
 
-    if (!title) validationErrors.title = 'Title is required.';
-    if (!ingredients) validationErrors.ingredients = 'Ingredients are required.';
-    if (!steps) validationErrors.steps = 'Preparation steps are required.';
-    else if (ingredients.split('\n').length < 2)
-      validationErrors.ingredients = 'Please add at least two ingredients.';
-
+    // If validation passes (no errors), submit the form
     if (Object.keys(validationErrors).length === 0) {
       const newRecipe = {
         title,
         ingredients: ingredients.split('\n'),
         steps: steps.split('\n'),
       };
-      // In a real application, you would likely send this data to a server.
+
       console.log('New Recipe Added:', newRecipe);
       alert('Recipe added successfully!');
-      // Clear the form
       setTitle('');
       setIngredients('');
       setSteps('');
     } else {
-      setErrors(validationErrors);
+      setErrors(validationErrors); // Show errors if validation fails
     }
   };
 

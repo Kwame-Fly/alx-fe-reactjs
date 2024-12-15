@@ -24,7 +24,7 @@ const Search = () => {
       const userData = await githubService.fetchUserData(username);
       setUser(userData);  // Set the user data if successful
     } catch (err) {
-      setError("Looks like we can't find the user");  // Show error if user is not found
+      setError("Looks like we cant find the user");  // Show error if user is not found
     } finally {
       setLoading(false);  // Set loading state to false after the request is complete
     }

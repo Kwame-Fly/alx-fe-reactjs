@@ -22,7 +22,7 @@ const fetchUsers = async ({ username, location, minRepos, page }) => {
 
   try {
     // Send GET request to the GitHub API's search users endpoint
-    const response = await axios.get('https://api.github.com/search/users', {
+    const response = await axios.get("https://api.github.com/search/users?q", {
       params: {
         q: query,  // Pass the constructed query string
         page: page,  // Pagination parameter
@@ -34,6 +34,7 @@ const fetchUsers = async ({ username, location, minRepos, page }) => {
     return response.data;
   } catch (error) {
     // Handle errors (e.g., network issues, API issues)
+    console.error('Error fetching users:', error);
     throw new Error('Failed to fetch users: ' + error.message);
   }
 };

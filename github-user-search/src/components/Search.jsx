@@ -11,6 +11,28 @@ const Search = () => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
 
+  // Function to fetch user data from GitHub
+  const fetchUserData = async () => {
+    try {
+      setLoading(true); // Show loading spinner/message
+      setError(null); // Clear previous errors
+
+      const searchParams = {
+        username,
+        location,
+        minRepos: minRepos ? parseInt(minRepos) : null, // Convert to number if provided
+        page,
+      };
+
+      const data = await githubService.fetchUsers(searchParams);
+      setUsers(data.items); // Update state with fetched users
+    } catch (err) {
+      setError('Looks like we cant find the user'); // Set error message
+    } finally {
+      setLoading(false); // Hide loading spinner/message
+    }
+  }
+
   const handleChange = (event) => {
     if (event.target.name === 'username') setUsername(event.target.value);
     if (event.target.name === 'location') setLocation(event.target.value);

@@ -11,7 +11,7 @@ const Search = ({ onSearch }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (username.trim()) {
-      onSearch(username);  
+      onSearch(username);  // Pass the username to the parent component for API search
     }
   };
 

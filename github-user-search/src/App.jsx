@@ -25,15 +25,16 @@ const App = () => {
   return (
     <div className="App">
       <Search onSearch={handleSearch} />
-      
+
       {/* Conditional Rendering */}
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {user && !loading && !error && (
         <div>
+          <img src={user.avatar_url} alt="Avatar" width="100" />
           <h2>{user.name}</h2>
           <p>{user.bio}</p>
-          <img src={user.avatar_url} alt="Avatar" width="100" />
+          <p>Username: <strong>{user.login}</strong></p>
           <p>
             <a href={user.html_url} target="_blank" rel="noopener noreferrer">
               Visit Profile

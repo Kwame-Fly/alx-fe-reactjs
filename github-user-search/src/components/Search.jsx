@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const Search = ({ onSearch }) => {
   const [username, setUsername] = useState('');
-  
+
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
@@ -11,14 +11,14 @@ const Search = ({ onSearch }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (username.trim()) {
-      onSearch(username);  // Pass the username to the parent component for API search
+      onSearch(username); // Pass the username to the parent component for the API request
     }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input 
+        <input
           type="text"
           placeholder="Enter GitHub username"
           value={username}

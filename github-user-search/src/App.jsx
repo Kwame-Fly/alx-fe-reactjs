@@ -11,14 +11,14 @@ const App = () => {
 
   const handleSearch = async (username) => {
     setLoading(true);  // Set loading state to true
-    setError(null);    // Clear any previous errors
+    setError(null);    // Clear previous errors
     try {
       const userData = await githubService.fetchUserData(username);
       setUser(userData);  // Set the user data
     } catch (err) {
-      setError("Looks like we can't find the user"); // Handle error if user not found
+      setError("Looks like we can't find the user"); // Error if user is not found
     } finally {
-      setLoading(false);  // Set loading state to false after the request is complete
+      setLoading(false);  // Set loading state to false once the request is complete
     }
   };
 
